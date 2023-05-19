@@ -47,6 +47,6 @@ func listGalleryHandler(c echo.Context) error {
 
 func findGalleryHandler(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
-	gallery := &models.Address{ID: id}
+	gallery := &models.Gallery{ID: int64(id)}
 	return c.JSON(http.StatusOK, gallery)
 }
