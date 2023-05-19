@@ -22,7 +22,7 @@ func createVoucherHandler(c echo.Context) error {
 	if err := c.Bind(voucher); err != nil {
 		return err
 	}
-	return c.JSON(http.StatusOK, voucher)
+	return c.JSON(http.StatusCreated, voucher)
 }
 
 func updateVoucherHandler(c echo.Context) error {
@@ -31,7 +31,7 @@ func updateVoucherHandler(c echo.Context) error {
 		return err
 	}
 	fmt.Println("Updating voucher id:", voucher.ID)
-	return c.JSON(http.StatusOK, voucher)
+	return c.JSON(http.StatusCreated, voucher)
 }
 
 func deleteVoucherHandler(c echo.Context) error {
