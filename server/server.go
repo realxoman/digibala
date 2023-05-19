@@ -20,6 +20,7 @@ func StartServer() {
 	fmt.Println(string(bs))
 
 	addressRoutes(e)
+	giftCardRoutes(e)
 	currencyRoutes(e)
 
 	log.Fatal(e.Start(":8080"))
