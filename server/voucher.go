@@ -12,9 +12,17 @@ import (
 func voucherRoutes(e *echo.Echo) {
 	e.GET("/voucher", listVoucherHandler)
 	e.POST("/voucher", createVoucherHandler)
-	e.GET("/voucher/:id", findVoucherHandler)
+	e.GET("/voucher/:id", retreveVoucherHandler)
 	e.DELETE("/voucher/:id", deleteVoucherHandler)
 	e.PUT("/voucher", updateVoucherHandler)
+}
+
+func createVoucherHandler(c echo.Context) error {
+	voucher := &models.Voucher{}
+	if err := c.Bind(voucher); err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, voucher)
 }
 
 func updateVoucherHandler(c echo.Context) error {
@@ -32,20 +40,12 @@ func deleteVoucherHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, models.StatusOK{OK: "OK"})
 }
 
-func createVoucherHandler(c echo.Context) error {
-	voucher := &models.Voucher{}
-	if err := c.Bind(voucher); err != nil {
-		return err
-	}
-	return c.JSON(http.StatusOK, voucher)
-}
-
 func listVoucherHandler(c echo.Context) error {
 	vouchers := []models.Voucher{}
 	return c.JSON(http.StatusOK, vouchers)
 }
 
-func findVoucherHandler(c echo.Context) error {
+func retreveVoucherHandler(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	voucher := &models.Voucher{ID: id}
 	return c.JSON(http.StatusOK, voucher)
