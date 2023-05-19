@@ -12,9 +12,10 @@ import (
 func socialRoutes(e *echo.Echo) {
 	e.GET("/social", listSocialHandler)
 	e.POST("/social", createSocialHandler)
-	e.GET("/social", getSocialHandler)
-	e.DELETE("/social", deleteSocialHandler)
-	e.PUT("/social", updateSocialHandler)
+	e.GET("/social/:id", getSocialHandler)
+	e.DELETE("/social/:id", deleteSocialHandler)
+	e.PUT("/social/:id", updateSocialHandler)
+	e.PATCH("/social/:id/logo", updateSocialLogoHandler)
 }
 
 func listSocialHandler(c echo.Context) error {
@@ -45,4 +46,8 @@ func updateSocialHandler(c echo.Context) error {
 	}
 	fmt.Println("Updatig social id: ", social.ID)
 	return c.JSON(http.StatusOK, social)
+}
+func updateSocialLogoHandler(c echo.Context) error {
+	// id, _ := strconv.Atoi(c.Param("id"))
+	return c.JSON(http.StatusOK, models.StatusOK{OK: "Logo updated"})
 }
