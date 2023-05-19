@@ -10,20 +10,40 @@ import (
 // user routes comes here
 
 func getAllUsersHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "Get All Users")
+	return c.JSON(http.StatusOK, models.User{})
 }
 func getUserHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "Get Single User")
+	return c.JSON(http.StatusOK, models.User{})
 }
 
 func createUserHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "create User") 
+	newUser := new(models.User)
+
+	if err := c.Bind(newUser); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"success": false,
+			"error":   err.Error(),
+		})
+	}
+	return c.JSON(http.StatusCreated, newUser)
 }
 func editUserHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "Edit user successfully")
+	if err := c.Bind(models.User{}); err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"success": false,
+			"error":   err.Error(),
+		})
+	}
+	return c.JSON(http.StatusCreated, models.User{})
 }
 func deleteUserHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "Delete User successfully")
+	id := c.Param("id")
+
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"success": true,
+		"id":      id,
+		"user":    models.User{},
+	})
 }
 
 func init() {
