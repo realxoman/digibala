@@ -2,7 +2,7 @@ package server
 
 import (
 	"digibala/models"
-	"fmt"
+	
 
 	"github.com/labstack/echo/v4"
 	"net/http"
@@ -55,7 +55,7 @@ func deleteUserHandler(c echo.Context) error {
 
 
 func init() {
-	fmt.Println(models.User{})
+	
 
 	e.GET("/users", getAllUsersHandler)
 	e.GET("/users/:id", getUserHandler)
