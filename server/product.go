@@ -11,7 +11,7 @@ import (
 
 func productRoutes(e *echo.Echo) {
 	e.GET("/product", indexProductHandler)
-	e.GET("/product/:id", FindProductHandler)
+	e.GET("/product/:id", findProductHandler)
 	e.POST("/product", createProductHandler)
 	e.PUT("/product/:id", updateProductHandler)
 	e.DELETE("/product/:id", deleteProductHandler)
@@ -22,7 +22,7 @@ func indexProductHandler(c echo.Context) error {
 	var products []models.Product
 	return c.JSON(http.StatusOK, products)
 }
-func FindProductHandler(c echo.Context) error {
+func findProductHandler(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 
 	return c.JSON(http.StatusNotFound, id)
