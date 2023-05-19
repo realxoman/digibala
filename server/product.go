@@ -2,7 +2,6 @@ package server
 
 import (
 	"digibala/models"
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -12,7 +11,6 @@ import (
 var products []models.Product
 
 func productRoutes(e *echo.Echo) {
-	fmt.Println(models.User{})
 	e.GET("/product", indexProductHandler)
 	e.GET("/product/:id", FindProductHandler)
 	e.POST("/product", createProductHandler)
@@ -50,7 +48,6 @@ func updateProductHandler(c echo.Context) error {
 	var index int
 	find := false
 	for i, product := range products {
-		fmt.Println(product.ID, product.ID == id)
 		if product.ID == id {
 			index = i
 			find = true
@@ -72,7 +69,6 @@ func deleteProductHandler(c echo.Context) error {
 	var index int
 	find := false
 	for i, product := range products {
-		fmt.Println(product.ID, product.ID == id)
 		if product.ID == id {
 			index = i
 			find = true
