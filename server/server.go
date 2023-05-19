@@ -20,7 +20,9 @@ func StartServer() {
 	fmt.Println(string(bs))
 
 
-	addresRoutes(e)
+	addressRoutes(e)
+	currencyRoutes(e)
+
 
 
 	log.Fatal(e.Start(":8080"))
