@@ -19,6 +19,7 @@ func galleryRoutes(e *echo.Echo) {
 
 func updateGalleryHandler(c echo.Context) error {
 	gallery := &models.Gallery{}
+	//TODO logic Service
 	if err := c.Bind(gallery); err != nil {
 		return err
 	}
@@ -27,12 +28,14 @@ func updateGalleryHandler(c echo.Context) error {
 }
 
 func deleteGalleryHandler(c echo.Context) error {
+	//TODO logic Service
 	id, _ := strconv.Atoi(c.Param("id"))
 	fmt.Println("Deleting address id:", id)
 	return c.JSON(http.StatusOK, models.StatusOK{OK: "OK"})
 }
 
 func createGalleryHandler(c echo.Context) error {
+	//TODO logic Service
 	gallery := &models.Gallery{}
 	if err := c.Bind(gallery); err != nil {
 		return err
@@ -41,11 +44,13 @@ func createGalleryHandler(c echo.Context) error {
 }
 
 func listGalleryHandler(c echo.Context) error {
+	//TODO logic Service
 	gallery := &models.Gallery{}
 	return c.JSON(http.StatusOK, gallery)
 }
 
 func findGalleryHandler(c echo.Context) error {
+	//TODO logic Service
 	id, _ := strconv.Atoi(c.Param("id"))
 	gallery := &models.Gallery{ID: int64(id)}
 	return c.JSON(http.StatusOK, gallery)
