@@ -18,5 +18,10 @@ func StartServer() {
 	e.HideBanner = true
 	bs, _ := os.ReadFile("server/banner.txt")
 	fmt.Println(string(bs))
+
+
+	addresRoutes(e)
+
+
 	log.Fatal(e.Start(":8080"))
 }
