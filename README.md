@@ -1,6 +1,7 @@
 
 User [hossein nourian]
-Customer [hassan mohammadian]
+Social Medias [hassan mohammadian]
+
 Administrator [alireza abbasnia]
 Product [mohammad ehsan fayez]
 Category [sajede talebi]
@@ -24,4 +25,6 @@ Banner [sina hamidi]
 Country [ardeshir]
 City [eghbal shirasb]
 Settings [danial abedini]
+
 Image Gallery [armin eyvazi]
+

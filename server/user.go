@@ -3,11 +3,17 @@ package server
 import (
 	"digibala/models"
 	"fmt"
+
 	"github.com/labstack/echo/v4"
 	"net/http"
+
+
+	
+
 )
 
 // user routes comes here
+
 
 func getAllUsersHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, models.User{})
@@ -37,6 +43,7 @@ func editUserHandler(c echo.Context) error {
 	return c.JSON(http.StatusCreated, models.User{})
 }
 func deleteUserHandler(c echo.Context) error {
+
 	id := c.Param("id")
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
@@ -46,11 +53,14 @@ func deleteUserHandler(c echo.Context) error {
 	})
 }
 
+
 func init() {
 	fmt.Println(models.User{})
+
 	e.GET("/users", getAllUsersHandler)
 	e.GET("/users/:id", getUserHandler)
 	e.POST("/users", createUserHandler)
 	e.PUT("/users/:id", editUserHandler)
 	e.DELETE("/users/:id", deleteUserHandler)
+
 }
