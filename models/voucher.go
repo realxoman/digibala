@@ -29,12 +29,12 @@ type UserVoucher struct {
 }
 
 type Voucher struct {
-	ID             int            `json:"id"`
-	IsActive       bool           `json:"is_active"`
-	Code           string         `json:"code"`
-	Type           string         `json:"type"`
-	Num            int            `json:"num"`
-	ProductVoucher ProductVoucher `json:"products"`
-	UserVoucher    UserVoucher    `json:"users"`
-	ExpiredTime    time.Time      `json:"exp_time"`
+	ID          int            `json:"id"`
+	IsActive    bool           `json:"is_active"`
+	Code        string         `json:"code"`
+	Type        string         `json:"type"`
+	Num         int            `json:"num"`
+	Product     ProductVoucher `json:"products"`
+	User        UserVoucher    `json:"users"`
+	ExpiredTime time.Time      `json:"exp_time"`
 }
