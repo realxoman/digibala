@@ -6,8 +6,8 @@ type AdminRank struct {
 }
 
 type Administrator struct {
-	Id      int
-	User_id int
-	Rank    AdminRank
-	User    User
+	Id     int
+	UserId int
+	Rank   AdminRank
+	User   User
 }
