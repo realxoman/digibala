@@ -3,19 +3,18 @@ package server
 import (
 	"digibala/models"
 	"net/http"
-    "time"
-	//"fmt"
+    //"time"
+	"fmt"
 	"strconv"
 
     "github.com/labstack/echo/v4"
 )
 
-var brands []models.Brand
-var brandIDCounter int
 
 
 // ListBrands retrieves a list of all brands
 func ListBrands(c echo.Context) error {
+	var brands []models.Brand
 	return c.JSON(http.StatusOK, brands)
 }
 
@@ -25,60 +24,23 @@ func CreateBrand(c echo.Context) error {
 	if err := c.Bind(brand); err != nil {
 		return err
 	}
-	brand.ID = brandIDCounter
-	brand.CreatedAt = time.Now()
-	brand.UpdatedAt = time.Now()
-	brandIDCounter++
-
-	brands = append(brands, *brand)
-
 	return c.JSON(http.StatusCreated, brand)
 }
 //retrive function
 func GetBrand(c echo.Context) error {
-	brandID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, "Invalid brand ID")
-	}
-
-	for _, brand := range brands {
-		if brand.ID == brandID {
-			return c.JSON(http.StatusOK, brand)
-		}
-	}
-
-	return echo.NewHTTPError(http.StatusNotFound, "Brand not found")
+	id, _ := strconv.Atoi(c.Param("id"))
+	address := &models.Brand{ID: id}
+	return c.JSON(http.StatusOK, address)
 }
 
 // UpdateBrand updates an existing brand
 func UpdateBrand(c echo.Context) error {
-	brandID, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, "Invalid brand ID")
+	brand := &models.Brand{}
+	if err := c.Bind(brand); err != nil {
+		return err
 	}
-
-	var updatedBrand models.Brand
-	found := false
-
-	for i, brand := range brands {
-		if brand.ID == brandID {
-			if err := c.Bind(&updatedBrand); err != nil {
-				return err
-			}
-			updatedBrand.ID = brand.ID
-			updatedBrand.CreatedAt = brand.CreatedAt
-			updatedBrand.UpdatedAt = time.Now()
-			brands[i] = updatedBrand
-			found = true
-			break
-		}
-	}
-
-	if found {
-		return c.JSON(http.StatusOK, updatedBrand)
-	}
-
-	return echo.NewHTTPError(http.StatusNotFound, "Brand not found")
+	fmt.Println("Updating brand id:", brand.ID)
+	return c.JSON(http.StatusOK, brand)
 }
 // delete function 
 func DeleteBrand(c echo.Context) error {
@@ -86,15 +48,8 @@ func DeleteBrand(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, "Invalid brand ID")
 	}
-
-	for i, brand := range brands {
-		if brand.ID == brandID {
-			brands = append(brands[:i], brands[i+1:]...)
-			return c.NoContent(http.StatusNoContent)
-		}
-	}
-
-	return echo.NewHTTPError(http.StatusNotFound, "Brand not found")
+	fmt.Println("Deleting brand id:", brandID)
+	return c.JSON(http.StatusOK, models.StatusOK{OK: "OK"})
 }
 
 func brandRoutes(e *echo.Echo) {
