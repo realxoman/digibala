@@ -1,5 +1,5 @@
 User [hossein nourian]
-Customer [hassan mohammadian]
+Social Medias [hassan mohammadian]
 Administrator [alireza abbasnia]
 Product [mohammad ehsan fayez]
 Category [sajede talebi]
