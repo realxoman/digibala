@@ -19,7 +19,8 @@ func StartServer() {
 	bs, _ := os.ReadFile("server/banner.txt")
 	fmt.Println(string(bs))
 
-	addressRoutes(e)
+	productRoutes(e)
+	addresRoutes(e)
 	currencyRoutes(e)
 	shippingRoutes(e)
 
