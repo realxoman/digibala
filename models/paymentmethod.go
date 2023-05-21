@@ -1,10 +1,12 @@
 package models
 
-type DargahType struct {
-	Saman    string
-	AP       string
-	Pasargad string
-}
+type DargahType int
+
+const (
+	Saman DargahType = iota
+	AP
+	Pasargad
+)
 
 type PaymentMethod struct {
 	ID     int        `json:"id"`
