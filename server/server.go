@@ -28,6 +28,7 @@ func StartServer() {
 	socialRoutes(e)
 	brandRoutes(e)
 	currencyRoutes(e)
+	paymentRoutes(e)
 	shippingRoutes(e)
   
 	log.Fatal(e.Start(":8080"))
