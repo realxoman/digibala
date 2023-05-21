@@ -19,8 +19,12 @@ func StartServer() {
 	bs, _ := os.ReadFile("server/banner.txt")
 	fmt.Println(string(bs))
 
+	productRoutes(e)
 	addresRoutes(e)
 	adminRoutes(e)
+	brandRoutes(e)
+	currencyRoutes(e)
+	shippingRoutes(e)
 
 	log.Fatal(e.Start(":8080"))
 }
