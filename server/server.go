@@ -22,13 +22,12 @@ func StartServer() {
 	addressRoutes(e)
 	productRoutes(e)
 	addresRoutes(e)
+	categoryRoutes(e)
 	adminRoutes(e)
 	socialRoutes(e)
 	brandRoutes(e)
 	currencyRoutes(e)
 	shippingRoutes(e)
-
-
 
 	log.Fatal(e.Start(":8080"))
 }
