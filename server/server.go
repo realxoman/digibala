@@ -21,6 +21,7 @@ func StartServer() {
 
 	productRoutes(e)
 	addresRoutes(e)
+	currencyRoutes(e)
 
 	log.Fatal(e.Start(":8080"))
 }
