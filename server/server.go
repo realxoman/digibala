@@ -20,6 +20,7 @@ func StartServer() {
 	fmt.Println(string(bs))
 
 	addressRoutes(e)
+	giftCardRoutes(e)
 	productRoutes(e)
 	addresRoutes(e)	
 	promotionRoutes(e)
