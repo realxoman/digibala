@@ -20,6 +20,20 @@ func StartServer() {
 	fmt.Println(string(bs))
 
 	addresRoutes(e)
+	supplierRoutes(e)
 
+	addressRoutes(e)
+	giftCardRoutes(e)
+	productRoutes(e)
+	addresRoutes(e)	
+	promotionRoutes(e)
+	categoryRoutes(e)
+	adminRoutes(e)
+	socialRoutes(e)
+	brandRoutes(e)
+	currencyRoutes(e)
+	paymentRoutes(e)
+	shippingRoutes(e)
+  
 	log.Fatal(e.Start(":8080"))
 }
