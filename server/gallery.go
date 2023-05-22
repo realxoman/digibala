@@ -45,8 +45,8 @@ func createGalleryHandler(c echo.Context) error {
 
 func listGalleryHandler(c echo.Context) error {
 	//TODO logic Service
-	gallery := &models.Gallery{}
-	return c.JSON(http.StatusOK, gallery)
+	galleries := &[]models.Gallery{}
+	return c.JSON(http.StatusOK, galleries)
 }
 
 func findGalleryHandler(c echo.Context) error {
