@@ -3,10 +3,9 @@ package server
 import (
 	"digibala/models"
 	"fmt"
+	"github.com/labstack/echo/v4"
 	"net/http"
 	"strconv"
-
-	"github.com/labstack/echo/v4"
 )
 
 func addressRoutes(e *echo.Echo) {
