@@ -8,9 +8,9 @@ import (
 	"strconv"
 )
 
-func addresRoutes(e *echo.Echo) {
+func addressRoutes(e *echo.Echo) {
 	e.GET("/address", listAddressHandler)
-	e.POST("/addres", createAddressHandler)
+	e.POST("/address", createAddressHandler)
 	e.GET("/address/:id", findAddressHandler)
 	e.DELETE("/address/:id", deleteAddressHandler)
 	e.PUT("/address", updateAddressHandler)
@@ -40,7 +40,7 @@ func createAddressHandler(c echo.Context) error {
 }
 
 func listAddressHandler(c echo.Context) error {
-	addresses := []models.Address{}
+	var addresses []models.Address
 	return c.JSON(http.StatusOK, addresses)
 }
 
