@@ -18,7 +18,7 @@ func shippingRoutes(e *echo.Echo) {
 }
 
 func updateShippingHandler(c echo.Context) error {
-	shipping := &models.Address{}
+	shipping := &models.Shipping{}
 	if err := c.Bind(shipping); err != nil {
 		return err
 	}
@@ -33,7 +33,7 @@ func deleteShippingHandler(c echo.Context) error {
 }
 
 func createShippingHandler(c echo.Context) error {
-	shipping := &models.Address{}
+	shipping := &models.Shipping{}
 	err := c.Bind(shipping)
 	if err != nil {
 		return err
@@ -42,7 +42,7 @@ func createShippingHandler(c echo.Context) error {
 }
 
 func listShippingHandler(c echo.Context) error {
-	var shippings []models.Shipping
+	var shippings []*models.Shipping
 	return c.JSON(http.StatusOK, shippings)
 }
 
