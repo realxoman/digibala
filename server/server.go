@@ -20,7 +20,7 @@ func StartServer() {
 	fmt.Println(string(bs))
 
 	productRoutes(e)
-	// addresRoutes(e)
+	addresRoutes(e)
 	adminRoutes(e)
 	socialRoutes(e)
 	brandRoutes(e)
