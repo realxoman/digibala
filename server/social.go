@@ -19,7 +19,7 @@ func socialRoutes(e *echo.Echo) {
 }
 
 func listSocialHandler(c echo.Context) error {
-	socials := []models.Social{}
+	socials := []*models.Social{}
 	return c.JSON(http.StatusOK, socials)
 }
 func createSocialHandler(c echo.Context) error {

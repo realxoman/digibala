@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+    app:
+      container_name: "digibala"
+      build: .
+      expose:
+        - "8080"
+      env_file:
+        - ./config/dev.env
+#      depends_on:
+#        - mysql
+      ports:
+        - "8080:8080"
+#    mysql:
+#      image: mysql
+#      container_name: "digibala-db"
+#      ports:
+#        - "3306:3306"

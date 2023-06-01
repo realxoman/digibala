@@ -32,6 +32,7 @@ func StartServer() {
 	paymentRoutes(e)
 	shippingRoutes(e)
 	voucherRoutes(e)
+	faqRoutes(e)
 
 	log.Fatal(e.Start(":8080"))
 }
