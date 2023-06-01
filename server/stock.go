@@ -18,7 +18,7 @@ func stockRoutes(e *echo.Echo) {
 }
 
 func listStockHandler(c echo.Context) error {
-	var stocks []models.Stock
+	var stocks *[]models.Stock
 	return c.JSON(http.StatusOK, stocks)
 }
 func findStockHandler(c echo.Context) error {

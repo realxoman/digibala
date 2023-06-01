@@ -66,8 +66,10 @@ func TestStockRoutes(t *testing.T) {
 	})
 
 	t.Run("updateStockHandler", func(t *testing.T) {
-		reqBody := []byte(`{"quantity": 20}`)
-		req := httptest.NewRequest(http.MethodPut, "/stock/1", bytes.NewBuffer(reqBody))
+		reqBody := map[string]int{"quantity": 50}
+		reqJSON, err := json.Marshal(reqBody)
+		assert.NoError(t, err)
+		req := httptest.NewRequest(http.MethodPut, "/stock/1", bytes.NewBuffer(reqJSON))
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 		rec := httptest.NewRecorder()
 		c := e.NewContext(req, rec)
@@ -81,7 +83,7 @@ func TestStockRoutes(t *testing.T) {
 			err := json.Unmarshal(rec.Body.Bytes(), &quantity)
 			assert.NoError(t, err)
 			assert.Equal(t, 1, quantity.ProductID)
-			assert.Equal(t, 20, quantity.Quantity)
+			assert.Equal(t, reqBody["quantity"], quantity.Quantity) // Get quantity value from JSON request body
 		}
 	})
 
