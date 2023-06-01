@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestListBrands(t *testing.T) {
+func TestHandlerListBrands(t *testing.T) {
 	e := echo.New()
 	brandRoutes(e)
 
@@ -29,12 +29,17 @@ func TestListBrands(t *testing.T) {
 
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	expectedResponse := "[]"
-	actualResponse := strings.TrimSuffix(rec.Body.String(), "\n")
+	expectedResponse := []models.Brand{}
+	actualResponse := []models.Brand{}
+	err = json.Unmarshal(rec.Body.Bytes(), &actualResponse)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	assert.Equal(t, expectedResponse, actualResponse)
 }
 
-func TestCreateBrand(t *testing.T) {
+func TestHandlerCreateBrand(t *testing.T) {
 	e := echo.New()
 	brandRoutes(e)
 
@@ -65,7 +70,7 @@ func TestCreateBrand(t *testing.T) {
 	assert.JSONEq(t, string(expectedJSON), responseBody)
 }
 
-func TestGetBrand(t *testing.T) {
+func TestHandlerGetBrand(t *testing.T) {
 	e := echo.New()
 	brandRoutes(e)
 
@@ -94,7 +99,7 @@ func TestGetBrand(t *testing.T) {
 	assert.Equal(t, expectedID, responseBody.ID)
 }
 
-func TestUpdateBrand(t *testing.T) {
+func TestHandlerUpdateBrand(t *testing.T) {
 	e := echo.New()
 	brandRoutes(e)
 
@@ -127,7 +132,7 @@ func TestUpdateBrand(t *testing.T) {
 	assert.JSONEq(t, string(expectedJSON), responseBody)
 }
 
-func TestDeleteBrand(t *testing.T) {
+func TestHandlerDeleteBrand(t *testing.T) {
 	e := echo.New()
 	brandRoutes(e)
 
