@@ -8,8 +8,6 @@ import (
 	"net/http/httptest"
 	"testing"
 	"time"
-	"strings"
-
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
@@ -149,7 +147,12 @@ func TestHandlerDeleteBrand(t *testing.T) {
 
 	assert.Equal(t, http.StatusOK, rec.Code)
 
-	expectedResponse := `{"OK":"OK"}`
-	actualResponse := strings.TrimSuffix(rec.Body.String(), "\n")
+	expectedResponse := map[string]string{"OK": "OK"}
+	actualResponse := make(map[string]string)
+	err = json.Unmarshal(rec.Body.Bytes(), &actualResponse)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	assert.Equal(t, expectedResponse, actualResponse)
 }
