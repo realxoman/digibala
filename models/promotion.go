@@ -10,8 +10,3 @@ type Promotion struct {
 	Discount    float64
 	ExpireDate  time.Time
 }
-
-type Category struct {
-	ID   int
-	Name string
-}
