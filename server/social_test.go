@@ -17,7 +17,7 @@ func TestListSocial(t *testing.T) {
 	e := echo.New()
 	socialRoutes(e)
 
-	socials := []models.Social{}
+	socials := []*models.Social{}
 
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodGet, "/social", nil)
@@ -25,7 +25,7 @@ func TestListSocial(t *testing.T) {
 	e.ServeHTTP(w, r)
 
 	resp := w.Result()
-	ret := []models.Social{}
+	ret := []*models.Social{}
 	err := json.NewDecoder(resp.Body).Decode(&ret)
 	if err != nil {
 		t.Fatal(err)
