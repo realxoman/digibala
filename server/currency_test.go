@@ -21,13 +21,13 @@ func TestListCurrencyHandler(t *testing.T) {
 	e.ServeHTTP(w, r)
 
 	resp := w.Result()
-	ret := new(models.Currency)
+	ret := new([]models.Currency)
 	err := json.NewDecoder(resp.Body).Decode(ret)
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.Equal(t, http.StatusOK, w.Result().StatusCode)
-	assert.Equal(t, &models.Currency{}, ret)
+	assert.Equal(t, new([]models.Currency), ret)
 }
 
 func TestGetCurrencyByIDHandler(t *testing.T) {
