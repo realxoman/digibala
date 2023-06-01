@@ -9,7 +9,7 @@ import (
 )
 
 func listCurrencyHandler(c echo.Context) error {
-	var currencies []models.Currency
+	var currencies []*models.Currency
 	return c.JSON(http.StatusOK, currencies)
 }
 
@@ -58,7 +58,7 @@ func deleteCurrencyHandler(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, "Invalid currency ID")
 	}
 
-	return c.NoContent(http.StatusNoContent)
+	return c.NoContent(http.StatusOK)
 }
 
 func currencyRoutes(e *echo.Echo) {
