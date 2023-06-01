@@ -9,7 +9,7 @@ import (
 )
 
 func listCurrencyHandler(c echo.Context) error {
-	var currencies []models.Currency
+	var currencies []*models.Currency
 	return c.JSON(http.StatusOK, currencies)
 }
 
