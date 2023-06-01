@@ -28,13 +28,13 @@ func updateAdminHandler(c echo.Context) error {
 	if err := c.Bind(admin); err != nil {
 		return err
 	}
-	fmt.Println("updating admin with user_id:", admin.User_id)
+	fmt.Println("updating admin with user_id:", admin.UserId)
 	return c.JSON(http.StatusOK, admin)
 }
 
 func checkAdminHandler(c echo.Context) error {
 	user_id, _ := strconv.Atoi(c.Param("user_id"))
-	admin := &models.Administrator{User_id: user_id}
+	admin := &models.Administrator{UserId: user_id}
 	fmt.Println("finding admin with user_id:", user_id)
 	return c.JSON(http.StatusOK, admin)
 }
