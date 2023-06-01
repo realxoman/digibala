@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <h1>Quera Golang Course 1401-1402</h1>
+        <h2>Teacher</h2>
+        <ul>
+            <li>First Name: {{ .teacher.FirstName }}</li>
+            <li>Last Name: {{ .teacher.LastName }} </li>
+            <li>Email: {{ .teacher.Email }}</li>
+        </ul>
+
+        <h2>Subjects</h2>
+        <ol>
+            {{ range $subject := .subjects }}
+            <li>{{ $subject }}</li>
+            {{ end }}
+        </ol>
+
+
+        <h2>Is Finished:</h2> {{ if .finished }} YES {{else}} NO {{end}}
+
+    </body>
+</html>
