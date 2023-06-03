@@ -110,7 +110,7 @@ func TestDeleteVoucher(t *testing.T) {
 	assert.Equal(t, status, ret)
 }
 
-func TestUpdateSocial(t *testing.T) {
+func TestUpdateVoucher(t *testing.T) {
 	e := echo.New()
 	voucherRoutes(e)
 
