@@ -10,11 +10,11 @@ import (
 )
 
 func voucherRoutes(e *echo.Echo) {
-	e.GET("/voucher", listVoucherHandler)
-	e.POST("/voucher", createVoucherHandler)
-	e.GET("/voucher/:id", retreveVoucherHandler)
-	e.DELETE("/voucher/:id", deleteVoucherHandler)
-	e.PUT("/voucher", updateVoucherHandler)
+	e.GET("/api/v1/voucher", listVoucherHandler)
+	e.POST("/api/v1/voucher", createVoucherHandler)
+	e.GET("/api/v1/voucher/:id", retreveVoucherHandler)
+	e.DELETE("/api/v1/voucher/:id", deleteVoucherHandler)
+	e.PUT("/api/v1/voucher", updateVoucherHandler)
 }
 
 func createVoucherHandler(c echo.Context) error {
@@ -41,7 +41,7 @@ func deleteVoucherHandler(c echo.Context) error {
 }
 
 func listVoucherHandler(c echo.Context) error {
-	vouchers := []models.Voucher{}
+	vouchers := []*models.Voucher{}
 	return c.JSON(http.StatusOK, vouchers)
 }
 
