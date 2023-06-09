@@ -1,7 +1,7 @@
 package middelwares
 
 import (
-	"digibala/utils"
+	"auth/utils"
 	"net/http"
 
 	"github.com/labstack/echo/v4"

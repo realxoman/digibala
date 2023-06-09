@@ -1,8 +1,9 @@
-package auth
+package routes
 
 import (
-	"digibala/utils"
 	"net/http"
+
+	"auth/utils"
 
 	"github.com/labstack/echo/v4"
 )

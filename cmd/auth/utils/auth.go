@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"digibala/models"
+	"auth/models"
 	"errors"
 	"fmt"
 	"os"

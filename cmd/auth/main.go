@@ -1,10 +1,9 @@
 package main
 
 import (
-	auth "digibala/cmd/auth/routes"
+	"auth/routes"
 	"fmt"
 	"os"
-
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
@@ -12,6 +11,6 @@ import (
 func main() {
 	_ = godotenv.Load("cmd/auth/.env")
 	e := echo.New()
-	auth.RegisterRoutes(e)
+	routes.RegisterRoutes(e)
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", os.Getenv("API_PORT"))))
 }
