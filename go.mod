@@ -9,6 +9,9 @@ require (
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
+	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/labstack/gommon v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
