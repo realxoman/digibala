@@ -28,7 +28,6 @@ func StartServer() {
 	adminRoutes(e)
 	socialRoutes(e)
 	brandRoutes(e)
-	currencyRoutes(e)
 	paymentRoutes(e)
 	shippingRoutes(e)
 	voucherRoutes(e)
