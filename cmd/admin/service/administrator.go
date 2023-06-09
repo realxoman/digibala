@@ -1,4 +1,4 @@
-package server
+package service
 
 import (
 	models "admin/model"
@@ -17,15 +17,7 @@ func init() {
 	db = storage.GetConnection()
 }
 
-func AdminRoutes(e *echo.Echo) {
-	e.GET("/api/admin", listAdminHandler)
-	e.POST("/api/admin", addNewAdminHandler)
-	e.GET("/api/admin/:user_id", checkAdminHandler)
-	e.DELETE("/api/admin/:user_id", deleteAdminHandler)
-	e.PUT("/api/admin", updateAdminHandler)
-}
-
-func deleteAdminHandler(c echo.Context) error {
+func Delete(c echo.Context) error {
 	user_id, _ := strconv.Atoi(c.Param("user_id"))
 
 	admin := &models.Administrator{}
@@ -42,7 +34,7 @@ func deleteAdminHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, models.StatusOK{OK: "OK"})
 }
 
-func updateAdminHandler(c echo.Context) error {
+func Update(c echo.Context) error {
 	admin := &models.Administrator{}
 	if err := c.Bind(admin); err != nil {
 		return err
@@ -78,7 +70,7 @@ func updateAdminHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, admin)
 }
 
-func checkAdminHandler(c echo.Context) error {
+func Check(c echo.Context) error {
 	user_id, _ := strconv.Atoi(c.Param("user_id"))
 	admin := &models.Administrator{UserId: user_id}
 	result := db.First(admin, user_id)
@@ -89,7 +81,7 @@ func checkAdminHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, admin)
 }
 
-func addNewAdminHandler(c echo.Context) error {
+func Add(c echo.Context) error {
 	admin := &models.Administrator{}
 	if err := c.Bind(admin); err != nil {
 		return err
@@ -115,7 +107,7 @@ func addNewAdminHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, admin)
 }
 
-func listAdminHandler(c echo.Context) error {
+func List(c echo.Context) error {
 	admins := []models.Administrator{} // from db
 	result := db.Find(&admins)
 	if result.Error != nil {
