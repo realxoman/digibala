@@ -1,7 +1,7 @@
 package main
 
 import (
-	"admin/server"
+	"admin/handler"
 	"log"
 
 	"github.com/labstack/echo/v4"
@@ -14,6 +14,6 @@ func init() {
 }
 
 func main() {
-	server.AdminRoutes(e)
+	handler.AdminRoutes(e)
 	log.Fatal(e.Start(":8081"))
 }
