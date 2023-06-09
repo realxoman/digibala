@@ -1,0 +1,8 @@
+مصطفی صولتی
+service.User.Create(&user)
+مصطفی صولتی
+db.User.Create(&user)
+مصطفی صولتی
+func CreateUser(user *user) {
+fmt.Println("Creating User")
+}
