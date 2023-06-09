@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func addressRoutes(e *echo.Echo) {
+func AddressRoutes(e *echo.Echo) {
 	e.GET("/address", listAddressHandler)
 	e.POST("/address", createAddressHandler)
 	e.GET("/address/:id", findAddressHandler)

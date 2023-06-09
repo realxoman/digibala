@@ -20,7 +20,7 @@ func StartServer() {
 	fmt.Println(string(bs))
 
 	supplierRoutes(e)
-	addressRoutes(e)
+	//addressRoutes(e) -> cmd gallery
 	giftCardRoutes(e)
 	productRoutes(e)
 	promotionRoutes(e)
