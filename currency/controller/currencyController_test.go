@@ -1,8 +1,8 @@
-package server
+package controller
 
 import (
 	"bytes"
-	"digibala/models"
+	"currency/models"
 	"encoding/json"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
@@ -13,7 +13,7 @@ import (
 
 func TestListCurrencyHandler(t *testing.T) {
 	e := echo.New()
-	currencyRoutes(e)
+	CurrencyRoutes(e)
 
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodGet, "/api/currency", nil)
@@ -21,18 +21,18 @@ func TestListCurrencyHandler(t *testing.T) {
 	e.ServeHTTP(w, r)
 
 	resp := w.Result()
-	ret := new([]*models.Currency)
+	ret := new([]*models.CurrencyResponse)
 	err := json.NewDecoder(resp.Body).Decode(ret)
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.Equal(t, http.StatusOK, w.Result().StatusCode)
-	assert.Equal(t, new([]*models.Currency), ret)
+	assert.Equal(t, new([]*models.CurrencyResponse), ret)
 }
 
 func TestGetCurrencyByIDHandler(t *testing.T) {
 	e := echo.New()
-	currencyRoutes(e)
+	CurrencyRoutes(e)
 
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodGet, "/api/currency/1", nil)
@@ -40,21 +40,20 @@ func TestGetCurrencyByIDHandler(t *testing.T) {
 	e.ServeHTTP(w, r)
 
 	resp := w.Result()
-	ret := new(models.Currency)
+	ret := new(models.CurrencyResponse)
 	err := json.NewDecoder(resp.Body).Decode(ret)
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.Equal(t, http.StatusOK, w.Result().StatusCode)
-	assert.Equal(t, &models.Currency{ID: 1}, ret)
+	assert.Equal(t, &models.CurrencyResponse{ID: 1}, ret)
 }
 
 func TestCreateCurrencyHandler(t *testing.T) {
 	e := echo.New()
-	currencyRoutes(e)
+	CurrencyRoutes(e)
 
-	currency := &models.Currency{
-		ID:     5,
+	currency := &models.CurrencyRequest{
 		Code:   "IR",
 		Name:   "Rial",
 		Symbol: "IR",
@@ -72,7 +71,7 @@ func TestCreateCurrencyHandler(t *testing.T) {
 	e.ServeHTTP(w, r)
 
 	resp := w.Result()
-	ret := new(models.Currency)
+	ret := new(models.CurrencyResponse)
 	err = json.NewDecoder(resp.Body).Decode(ret)
 	if err != nil {
 		t.Fatal(err)
@@ -82,10 +81,9 @@ func TestCreateCurrencyHandler(t *testing.T) {
 }
 func TestUpdateCurrencyHandler(t *testing.T) {
 	e := echo.New()
-	currencyRoutes(e)
+	CurrencyRoutes(e)
 
-	currency := &models.Currency{
-		ID:     1,
+	currency := &models.CurrencyRequest{
 		Code:   "IR",
 		Name:   "Rial",
 		Symbol: "IR",
@@ -103,7 +101,7 @@ func TestUpdateCurrencyHandler(t *testing.T) {
 	e.ServeHTTP(w, r)
 
 	resp := w.Result()
-	ret := new(models.Currency)
+	ret := new(models.CurrencyResponse)
 	err = json.NewDecoder(resp.Body).Decode(ret)
 	if err != nil {
 		t.Fatal(err)
@@ -113,7 +111,7 @@ func TestUpdateCurrencyHandler(t *testing.T) {
 }
 func TestDeleteCurrencyHandler(t *testing.T) {
 	e := echo.New()
-	currencyRoutes(e)
+	CurrencyRoutes(e)
 
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodDelete, "/api/currency/1", nil)
