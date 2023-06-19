@@ -12,9 +12,8 @@ import (
 
 
 
-// ListBrands retrieves a list of all brands
 func ListBrands(c echo.Context) error {
-	var brands []models.Brand
+	brands := []*models.Brand{} 
 	return c.JSON(http.StatusOK, brands)
 }
 

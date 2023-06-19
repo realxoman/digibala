@@ -10,7 +10,7 @@ import (
 )
 
 func galleryRoutes(e *echo.Echo) {
-	e.GET("/gallery", listGalleryHandler)
+	e.GET("/galleries", listGalleryHandler)
 	e.POST("/gallery", createGalleryHandler)
 	e.GET("/gallery/:id", findGalleryHandler)
 	e.DELETE("/gallery/:id", deleteGalleryHandler)
@@ -35,7 +35,6 @@ func deleteGalleryHandler(c echo.Context) error {
 }
 
 func createGalleryHandler(c echo.Context) error {
-	//TODO logic Service
 	gallery := &models.Gallery{}
 	if err := c.Bind(gallery); err != nil {
 		return err
@@ -44,8 +43,7 @@ func createGalleryHandler(c echo.Context) error {
 }
 
 func listGalleryHandler(c echo.Context) error {
-	//TODO logic Service
-	galleries := &[]models.Gallery{}
+	var galleries []*models.Gallery
 	return c.JSON(http.StatusOK, galleries)
 }
 
